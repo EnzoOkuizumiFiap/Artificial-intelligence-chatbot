@@ -1,0 +1,467 @@
+[
+    {
+        "id": "a7e4d56541303250",
+        "type": "tab",
+        "label": "Fluxo 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "40b5adaf6a0559b4",
+        "type": "watson-speech-to-text",
+        "z": "a7e4d56541303250",
+        "name": "",
+        "alternatives": 1,
+        "speakerlabels": true,
+        "smartformatting": false,
+        "lang": "pt-BR",
+        "langhidden": "pt-BR",
+        "langcustom": "NoCustomisationSetting",
+        "langcustomhidden": "",
+        "custom-weight": "0.5",
+        "band": "NarrowbandModel",
+        "bandhidden": "",
+        "keywords": "",
+        "keywords-threshold": "0.5",
+        "word-confidence": false,
+        "password": "",
+        "apikey": "piRP1h7pOEV36E-YG9IQi7QJP6ct5r_5J5OPZkYyvDbm",
+        "payload-response": true,
+        "streaming-mode": false,
+        "streaming-mute": true,
+        "auto-connect": false,
+        "discard-listening": false,
+        "disable-precheck": false,
+        "service-endpoint": "https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/5e122f13-9176-484e-881f-8e2cca3417b7",
+        "x": 840,
+        "y": 200,
+        "wires": [
+            [
+                "f44a1f4f1870e445",
+                "920313f4892178a0"
+            ]
+        ]
+    },
+    {
+        "id": "ca489912fd9a6ecf",
+        "type": "function",
+        "z": "a7e4d56541303250",
+        "name": "function 1",
+        "func": "msg.chatId = msg.payload.chatId;\nmsg.weblink = msg.payload.weblink; // só se o campo existir\nmsg.payload = {\n    input: {\n        message_type: \"text\",\n        text: msg.payload.content\n    }\n};\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 200,
+        "wires": [
+            [
+                "97c131251709a271",
+                "4858a47d1b3d229f"
+            ]
+        ]
+    },
+    {
+        "id": "1ce16d34313a91e5",
+        "type": "debug",
+        "z": "a7e4d56541303250",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 220,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "97c131251709a271",
+        "type": "debug",
+        "z": "a7e4d56541303250",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "f44a1f4f1870e445",
+        "type": "debug",
+        "z": "a7e4d56541303250",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "920313f4892178a0",
+        "type": "function",
+        "z": "a7e4d56541303250",
+        "name": "function 2",
+        "func": "msg.payload = {\n    \"content_link\": msg.payload_weblink,\n    \"chatId_link\": msg.variavel_temporaria,\n    \"content_chat\": msg.payload.output.generic[0].text,\n    \"chatId_chat\": msg.params.session_id,\n    \"type\": \"message\"\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 200,
+        "wires": [
+            [
+                "dd4a6659d65c4375",
+                "be1a404f63afdda0"
+            ]
+        ]
+    },
+    {
+        "id": "be1a404f63afdda0",
+        "type": "debug",
+        "z": "a7e4d56541303250",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "fe93b453c3bd87af",
+        "type": "function",
+        "z": "a7e4d56541303250",
+        "name": "function 3",
+        "func": "// Função 3 - Atualizada\nmsg.chatId = msg.payload.chatId;\nif (msg.payload.weblink) {\n    msg.weblink = msg.payload.weblink;\n}\n\n// Verifica se content existe\nif (msg.payload.content !== undefined) {\n    msg.payload = msg.payload.content;\n} else {\n    msg.payload = \"[Erro] Campo 'content' não encontrado na mensagem.\";\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 360,
+        "wires": [
+            [
+                "20f9b965aa3f004f",
+                "f6392fd960674622"
+            ]
+        ]
+    },
+    {
+        "id": "84b7331dad46ae33",
+        "type": "function",
+        "z": "a7e4d56541303250",
+        "name": "function 4",
+        "func": "// Função 4 - Atualizada\nif (msg.payload?.output?.text) {\n    msg.payload = msg.payload.output.text.join(\"\\n\");\n} else if (typeof msg.payload === \"string\") {\n    // Mantém a string se já for válida\n} else {\n    // Adiciona detalhes do erro para diagnóstico\n    msg.payload = \"[Erro] Resposta inválida do bot. Estrutura recebida: \" + JSON.stringify(msg.payload);\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 360,
+        "wires": [
+            [
+                "dd4a6659d65c4375"
+            ]
+        ]
+    },
+    {
+        "id": "f991ed07c4c45f34",
+        "type": "watson-text-to-speech",
+        "z": "a7e4d56541303250",
+        "name": "",
+        "lang": "pt-BR",
+        "langhidden": "pt-BR",
+        "langcustom": "NoCustomisationSetting",
+        "langcustomhidden": "",
+        "voice": "pt-BR_IsabelaV3Voice",
+        "voicehidden": "pt-BR_IsabelaV3Voice",
+        "format": "audio/mp3",
+        "password": "",
+        "apikey": "dnrhND9tCNXEyyFqyIjv5jjTNTcSDqp0lwphwAbRxyiy",
+        "payload-response": true,
+        "service-endpoint": "https://api.au-syd.text-to-speech.watson.cloud.ibm.com/instances/9ebc176a-1302-4f9b-8568-f05bdc94f183",
+        "x": 860,
+        "y": 360,
+        "wires": [
+            [
+                "84b7331dad46ae33",
+                "d78fc819c446aec9"
+            ]
+        ],
+        "info": "console.log(\"[DEBUG] Entrada da Função 4:\", JSON.stringify(msg.payload));\r\n"
+    },
+    {
+        "id": "20f9b965aa3f004f",
+        "type": "debug",
+        "z": "a7e4d56541303250",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "d78fc819c446aec9",
+        "type": "debug",
+        "z": "a7e4d56541303250",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 460,
+        "wires": [],
+        "info": "console.log(\"[DEBUG] Entrada da Função 4:\", JSON.stringify(msg.payload));\r\n"
+    },
+    {
+        "id": "31b7b0f84148e759",
+        "type": "switch",
+        "z": "a7e4d56541303250",
+        "name": "",
+        "property": "payload.type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "voice",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "message",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 290,
+        "y": 300,
+        "wires": [
+            [
+                "ca489912fd9a6ecf"
+            ],
+            [
+                "fe93b453c3bd87af"
+            ]
+        ]
+    },
+    {
+        "id": "29ca5995dd566024",
+        "type": "telegram receiver",
+        "z": "a7e4d56541303250",
+        "name": "",
+        "bot": "d4ce88e776d4a92f",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "x": 110,
+        "y": 300,
+        "wires": [
+            [
+                "1ce16d34313a91e5",
+                "31b7b0f84148e759"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "dd4a6659d65c4375",
+        "type": "telegram sender",
+        "z": "a7e4d56541303250",
+        "name": "",
+        "bot": "d4ce88e776d4a92f",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1250,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4858a47d1b3d229f",
+        "type": "watson-assistant-v2",
+        "z": "a7e4d56541303250",
+        "name": "SimplifyHCBot",
+        "service-endpoint": "https://api.us-south.assistant.watson.cloud.ibm.com/v2/assistants/d84af718-b476-413b-8623-f3aa94ba3755/sessions",
+        "assistant_id": "d84af718-b476-413b-8623-f3aa94ba3755",
+        "debug": false,
+        "restart": false,
+        "return_context": true,
+        "alternate_intents": false,
+        "multisession": true,
+        "timeout": "",
+        "optout-learning": false,
+        "persist-session-id": false,
+        "x": 500,
+        "y": 200,
+        "wires": [
+            [
+                "b80d574cab3348f6",
+                "e361299f16ae29c4"
+            ]
+        ]
+    },
+    {
+        "id": "b80d574cab3348f6",
+        "type": "debug",
+        "z": "a7e4d56541303250",
+        "name": "debug 13",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "f6392fd960674622",
+        "type": "watson-assistant-v2",
+        "z": "a7e4d56541303250",
+        "name": "SimplifyHCBot",
+        "service-endpoint": "https://api.us-south.assistant.watson.cloud.ibm.com/instances/ba04109b-07dd-469b-bf3a-53a3a71ae680",
+        "assistant_id": "d84af718-b476-413b-8623-f3aa94ba3755",
+        "debug": false,
+        "restart": false,
+        "return_context": true,
+        "alternate_intents": false,
+        "multisession": true,
+        "timeout": "",
+        "optout-learning": false,
+        "persist-session-id": false,
+        "x": 520,
+        "y": 360,
+        "wires": [
+            [
+                "4effbf15be8d30bb",
+                "1af3cc89f04d43b1"
+            ]
+        ]
+    },
+    {
+        "id": "4effbf15be8d30bb",
+        "type": "debug",
+        "z": "a7e4d56541303250",
+        "name": "debug 14",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "1af3cc89f04d43b1",
+        "type": "function",
+        "z": "a7e4d56541303250",
+        "name": "function 8",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 360,
+        "wires": [
+            [
+                "f991ed07c4c45f34"
+            ]
+        ]
+    },
+    {
+        "id": "e361299f16ae29c4",
+        "type": "function",
+        "z": "a7e4d56541303250",
+        "name": "function 9",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 200,
+        "wires": [
+            [
+                "40b5adaf6a0559b4"
+            ]
+        ]
+    },
+    {
+        "id": "d4ce88e776d4a92f",
+        "type": "telegram bot",
+        "botname": "SimplifyHCBot",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "testenvironment": false,
+        "updatemode": "polling",
+        "pollinterval": 300,
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": 6667,
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbothost": "0.0.0.0",
+        "localbotport": 8443,
+        "publicbotport": 8443,
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    }
+]
