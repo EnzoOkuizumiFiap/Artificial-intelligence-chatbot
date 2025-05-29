@@ -22,6 +22,9 @@
           "text": "Meus agradecimentos"
         },
         {
+          "text": "meus honestos agradecimentos"
+        },
+        {
           "text": "Meus sinceros agradecimentos"
         },
         {
@@ -64,6 +67,9 @@
           "text": "Alguém ai"
         },
         {
+          "text": "bem vindo"
+        },
+        {
           "text": "Boa noite"
         },
         {
@@ -71,6 +77,9 @@
         },
         {
           "text": "Bom dia"
+        },
+        {
+          "text": "começar"
         },
         {
           "text": "Como vai"
@@ -89,6 +98,9 @@
         },
         {
           "text": "hey"
+        },
+        {
+          "text": "hi"
         },
         {
           "text": "Oi, como posso usar isso"
@@ -118,7 +130,16 @@
           "text": "Salve"
         },
         {
+          "text": "/start"
+        },
+        {
+          "text": "start"
+        },
+        {
           "text": "Watson"
+        },
+        {
+          "text": "welcome"
         }
       ],
       "description": "O usuário vai dizer olá"
@@ -209,63 +230,6 @@
         }
       ],
       "description": "Explicar como fazer o cadastro no App HC"
-    },
-    {
-      "intent": "conversao",
-      "examples": [
-        {
-          "text": "audio pra texto"
-        },
-        {
-          "text": "escreva o que esta falando"
-        },
-        {
-          "text": "escreva o que esta no audio"
-        },
-        {
-          "text": "fale o que esta no texto"
-        },
-        {
-          "text": "manda em audio"
-        },
-        {
-          "text": "mande em texto"
-        },
-        {
-          "text": "mude o texto para som"
-        },
-        {
-          "text": "pode ler o audio"
-        },
-        {
-          "text": "pode ler o texto"
-        },
-        {
-          "text": "Quero audio"
-        },
-        {
-          "text": "quero ouvir o texto"
-        },
-        {
-          "text": "Quero texto"
-        },
-        {
-          "text": "quero transformar esse audio em texto"
-        },
-        {
-          "text": "quero transformar esse texto em audio"
-        },
-        {
-          "text": "Responda em audio"
-        },
-        {
-          "text": "Responda em texto"
-        },
-        {
-          "text": "texto pra audio"
-        }
-      ],
-      "description": ""
     },
     {
       "intent": "Erro-cadastro",
@@ -1360,31 +1324,6 @@
             "mudar horário",
             "reagendar",
             "remarcar"
-          ]
-        }
-      ],
-      "fuzzy_match": true
-    },
-    {
-      "entity": "conversor",
-      "values": [
-        {
-          "type": "synonyms",
-          "value": "stt",
-          "synonyms": [
-            "letras",
-            "mensagem",
-            "texto"
-          ]
-        },
-        {
-          "type": "synonyms",
-          "value": "tts",
-          "synonyms": [
-            "audio",
-            "musica",
-            "som",
-            "voz"
           ]
         }
       ],
@@ -8069,7 +8008,7 @@
       },
       "conditions": "anything_else",
       "dialog_node": "Em outros casos",
-      "previous_sibling": "node_8_1746975336944",
+      "previous_sibling": "node_10_1747772430985",
       "disambiguation_opt_out": true
     },
     {
@@ -8252,6 +8191,27 @@
     },
     {
       "type": "standard",
+      "title": "Agradecimento",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "De nada! Se precisar estou a sua disposição! O Contato do nosso suporte é (11) 12345-6789"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#agradecimento",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_10_1747772430985",
+      "previous_sibling": "node_8_1746975336944"
+    },
+    {
+      "type": "standard",
       "title": "Onde fica o Hospital das Clínicas?",
       "output": {
         "generic": [
@@ -8270,18 +8230,6 @@
       "digress_in": "does_not_return",
       "dialog_node": "node_1_1746927610953",
       "previous_sibling": "node_5_1747007354628"
-    },
-    {
-      "type": "standard",
-      "title": "Conversor",
-      "metadata": {
-        "_customization": {
-          "mcr": true
-        }
-      },
-      "conditions": "#conversao",
-      "dialog_node": "node_1_1747136746122",
-      "previous_sibling": "Bem-vindo"
     },
     {
       "type": "standard",
@@ -8410,7 +8358,7 @@
       "conditions": "#ver-menu || @tipo_ajuda:Menu",
       "digress_in": "does_not_return",
       "dialog_node": "node_3_1746837688818",
-      "previous_sibling": "node_1_1747136746122"
+      "previous_sibling": "Bem-vindo"
     },
     {
       "type": "standard",
@@ -8441,7 +8389,7 @@
           }
         ]
       },
-      "conditions": "#orientar-agendamento || @acao_hc:agendar || #ver-agendamentos || @tipo_ajuda:agendamentos",
+      "conditions": "#orientar-agendamento || @acao_hc:agendar || #ver-agendamentos || @tipo_ajuda:agendamentos || @especialidade_medica",
       "digress_in": "does_not_return",
       "dialog_node": "node_3_1746922710501",
       "previous_sibling": "node_6_1746889765405"
@@ -8598,7 +8546,7 @@
           {
             "values": [
               {
-                "text": "Agora você irá criar uma senha para acessar o portal. É OBRIGATÓRIO a senha ter:\n\n- MÍNIMO DE 8 CARACTERES\n- LETRAS \n- NÚMEROS \n- CARACTERES ESPECIAIS \nCaracteres especiais são sinais como @, #, ! e ? que não são letras nem números.\n\nEscolha uma senha que seja segura, mas que você consiga lembrar. \nDepois disso, clique no botão 'CADASTRAR SENHA'.\n"
+                "text": "Agora você irá criar uma senha para acessar o portal. É OBRIGATÓRIO a senha ter:\n\n- MÍNIMO DE 8 CARACTERES\n- LETRAS\n- NÚMEROS\n- CARACTERES ESPECIAIS\nCaracteres especiais são sinais como @, #, ! e ? que não são letras nem números.\nEscolha uma senha que seja segura, mas que você consiga lembrar. \n\nDepois disso, clique no botão 'CADASTRAR SENHA'.\n\n"
               },
               {
                 "text": "Conseguiu Cadastrar uma senha??"
@@ -9310,26 +9258,6 @@
     {
       "type": "response_condition",
       "output": {
-        "generic": [
-          {
-            "values": [
-              {
-                "text": "Ok! Responderei em texto"
-              }
-            ],
-            "response_type": "text",
-            "selection_policy": "sequential"
-          }
-        ]
-      },
-      "parent": "node_1_1747136746122",
-      "conditions": "@conversor:stt",
-      "dialog_node": "response_7_1747136867647",
-      "previous_sibling": "response_9_1747136857213"
-    },
-    {
-      "type": "response_condition",
-      "output": {
         "generic": []
       },
       "parent": "node_8_1746969143190",
@@ -9355,25 +9283,6 @@
       },
       "conditions": "@sim-nao:sim",
       "dialog_node": "response_8_1747567371599"
-    },
-    {
-      "type": "response_condition",
-      "output": {
-        "generic": [
-          {
-            "values": [
-              {
-                "text": "Ok! Responderei em áudio."
-              }
-            ],
-            "response_type": "text",
-            "selection_policy": "multiline"
-          }
-        ]
-      },
-      "parent": "node_1_1747136746122",
-      "conditions": "@conversor:tts",
-      "dialog_node": "response_9_1747136857213"
     },
     {
       "type": "response_condition",

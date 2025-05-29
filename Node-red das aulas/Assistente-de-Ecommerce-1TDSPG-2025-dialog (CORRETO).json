@@ -1,0 +1,796 @@
+{
+  "intents": [
+    {
+      "intent": "Agradecimento",
+      "examples": [
+        {
+          "text": "Obrigada"
+        },
+        {
+          "text": "Obrigado pela ajuda"
+        },
+        {
+          "text": "Ok"
+        },
+        {
+          "text": "Ok, obrigado"
+        },
+        {
+          "text": "tamo junto botzera"
+        },
+        {
+          "text": "Valeu"
+        },
+        {
+          "text": "Valeu bot"
+        },
+        {
+          "text": "Vlw bot"
+        },
+        {
+          "text": "Você me ajudou"
+        }
+      ],
+      "description": "Captura a intenção do usuário de agradecer"
+    },
+    {
+      "intent": "Cadastro",
+      "examples": [
+        {
+          "text": "Cadastro"
+        },
+        {
+          "text": "Como faço para fazer cadastro na plataforma"
+        },
+        {
+          "text": "Como faço para fazer login"
+        },
+        {
+          "text": "Como logar com conta"
+        },
+        {
+          "text": "Como obter um cadastro"
+        },
+        {
+          "text": "Criar conta"
+        },
+        {
+          "text": "Login"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "compra_celular",
+      "examples": [
+        {
+          "text": "Adquirir smartphone"
+        },
+        {
+          "text": "Me ajude a comprar um Iphone"
+        },
+        {
+          "text": "Quero comprar um celular"
+        },
+        {
+          "text": "Quero comprar um Xiaomi"
+        },
+        {
+          "text": "Quero escolher um celular para comprar"
+        },
+        {
+          "text": "Quero escolher um smartphone para comprar"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Prazo_entrega",
+      "examples": [
+        {
+          "text": "Demora quanto a entrega?"
+        },
+        {
+          "text": "E para BH"
+        },
+        {
+          "text": "Minha compra chega quando?"
+        },
+        {
+          "text": "Qual o prazo de entrega?"
+        },
+        {
+          "text": "Quanto tempo demora para miha entrega chegar?"
+        },
+        {
+          "text": "Que dia a compra deve chegar?"
+        },
+        {
+          "text": "Salvador"
+        },
+        {
+          "text": "Tempo estimado de entrega?"
+        }
+      ],
+      "description": "Captura a intenção do usuário de saber qual é o prazo de entrega"
+    },
+    {
+      "intent": "reserva_produto",
+      "examples": [
+        {
+          "text": "Como eu faço a reserva da minha compra?"
+        },
+        {
+          "text": "Como posso reservar um produto"
+        },
+        {
+          "text": "Onde eu faço a reserva?"
+        },
+        {
+          "text": "Quero reservar uns itens"
+        },
+        {
+          "text": "Vocês reservam produtos?"
+        }
+      ],
+      "description": "Vai capturar a intenção do usuário em saber se o site reserva produtos"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "cep",
+      "values": [
+        {
+          "type": "patterns",
+          "value": "cep",
+          "patterns": [
+            "\\d{5}-\\d{3}"
+          ]
+        }
+      ],
+      "fuzzy_match": false
+    },
+    {
+      "entity": "Cidade",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Belo Horizonte",
+          "synonyms": [
+            "BH"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Rio de Janeiro",
+          "synonyms": [
+            "RJ"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "São Paulo",
+          "synonyms": [
+            "Sampa",
+            "SP"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "email",
+      "values": [
+        {
+          "type": "patterns",
+          "value": "email",
+          "patterns": [
+            "\\d{",
+            "\\b[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,}\\b"
+          ]
+        }
+      ],
+      "fuzzy_match": false
+    },
+    {
+      "entity": "marca_celular",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Apple",
+          "synonyms": [
+            "Iphone"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Motorola",
+          "synonyms": [
+            "Moto G"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Nokia",
+          "synonyms": [
+            "Tijolão"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Samsung",
+          "synonyms": [
+            "Galaxy"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Xiaomi",
+          "synonyms": [
+            "Mi",
+            "Poco",
+            "Redmi"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sim_nao",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Não",
+          "synonyms": [
+            "Discordo",
+            "Incorreto",
+            "Negado",
+            "Negativo",
+            "nop",
+            "Nunca"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Sim",
+          "synonyms": [
+            "Afirmativo",
+            "Bora",
+            "Certo",
+            "Claro",
+            "Concordo",
+            "Feito",
+            "Ok"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-currency",
+      "values": []
+    },
+    {
+      "entity": "telefone",
+      "values": [
+        {
+          "type": "patterns",
+          "value": "fixo",
+          "patterns": [
+            "\\d{4}-\\d{4}"
+          ]
+        }
+      ],
+      "fuzzy_match": false
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Bem-vindo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Olá. Como posso te ajudar? Posso te ajudar com o cadastro, com a compra do celular e o prazo de entrega!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Em outros casos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Eu não entendi. Você pode tentar reformular a frase."
+              },
+              {
+                "text": "Você pode reformular sua afirmação? Eu não estou entendendo."
+              },
+              {
+                "text": "Eu não entendi o sentido."
+              },
+              {
+                "text": "EU NÃO ENTENDI POHA, REFORMULAAAAAAAAAAAAAAA"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Em outros casos",
+      "previous_sibling": "node_3_1742827308039",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Qual o seu Cep?"
+              }
+            ],
+            "response_type": "text"
+          }
+        ]
+      },
+      "parent": "slot_8_1744031864220",
+      "event_name": "focus",
+      "dialog_node": "handler_2_1744031864226",
+      "previous_sibling": "handler_4_1744031864226"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_8_1744031864220",
+      "context": {
+        "cep": "@cep.literal"
+      },
+      "conditions": "@cep",
+      "event_name": "input",
+      "dialog_node": "handler_4_1744031864226"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_9_1744032596122",
+      "context": {
+        "telefone": "@telefone.literal"
+      },
+      "conditions": "@telefone",
+      "event_name": "input",
+      "dialog_node": "handler_5_1744032596123"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_8_1744032617475",
+      "context": {
+        "email": "@email.literal"
+      },
+      "conditions": "@email",
+      "event_name": "input",
+      "dialog_node": "handler_5_1744032617476"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "E qual o seu telefone?"
+              }
+            ],
+            "response_type": "text"
+          }
+        ]
+      },
+      "parent": "slot_9_1744032596122",
+      "event_name": "focus",
+      "dialog_node": "handler_7_1744032596123",
+      "previous_sibling": "handler_5_1744032596123"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "E o seu Email?"
+              }
+            ],
+            "response_type": "text"
+          }
+        ]
+      },
+      "parent": "slot_8_1744032617475",
+      "event_name": "focus",
+      "dialog_node": "handler_7_1744032617476",
+      "previous_sibling": "handler_5_1744032617476"
+    },
+    {
+      "type": "standard",
+      "title": "Captura o Valor do celular",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Eu tenho um celular da $marca_escolhida de até R$ $valor_escolhido. Gostaria de adicionar ao carrinho?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1743430540832",
+      "context": {
+        "valor_escolhido": "@sys-currency"
+      },
+      "conditions": "@sys-currency",
+      "dialog_node": "node_10_1743430654514"
+    },
+    {
+      "type": "standard",
+      "title": "Prazo de entrega",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Garantimos que sua compra será entregue em até 15 dias úteis"
+              },
+              {
+                "text": "Para qual cidade?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Prazo_entrega",
+      "dialog_node": "node_1_1742826880646",
+      "previous_sibling": "node_3_1743429110015"
+    },
+    {
+      "type": "standard",
+      "title": "Demais localidades",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Garantimos um prazo de 20 dias úteis"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1742826880646",
+      "conditions": "true",
+      "dialog_node": "node_1_1742828470732",
+      "previous_sibling": "node_3_1742828272837"
+    },
+    {
+      "type": "standard",
+      "title": "Compra de celular",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Ok, vou te ajudar! Irei fazer algumas perguntas para escolher o melhor modelo de celular para você, tudo bem?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#compra_celular",
+      "dialog_node": "node_1_1743430354785",
+      "previous_sibling": "node_1_1743432913220"
+    },
+    {
+      "type": "frame",
+      "title": "Cadastro",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Você confirma que o seu telefone é $telefone, o seu CEP é $cep e o seu email é $email ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Cadastro",
+      "dialog_node": "node_1_1743432913220",
+      "previous_sibling": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Capturar São Paulo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Para São Paulo, garantimos um prazo de 10 dias."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1742826880646",
+      "conditions": "@Cidade:(São Paulo)",
+      "dialog_node": "node_2_1742828165291"
+    },
+    {
+      "type": "standard",
+      "title": "Se a resposta for Não para o Cadastro",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1743432913220",
+      "context": {
+        "cep": null,
+        "email": null,
+        "telefone": null
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1743432913220"
+      },
+      "conditions": "@sim_nao:Não",
+      "dialog_node": "node_2_1744033264967"
+    },
+    {
+      "type": "standard",
+      "title": "Agradecimento",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Obrigado pela preferência. Se precisar de mais alguma coisa, fico a disposição"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Agradecimento",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_3_1742827308039",
+      "previous_sibling": "node_5_1742826522463"
+    },
+    {
+      "type": "standard",
+      "title": "Capturar Rio de Janeiro ou Belo Horizonte",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Para @Cidade, garantimos 15 dias úteis."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1742826880646",
+      "conditions": "@Cidade:(Rio de Janeiro) &&   @Cidade:(Belo Horizonte)",
+      "dialog_node": "node_3_1742828272837",
+      "previous_sibling": "node_2_1742828165291"
+    },
+    {
+      "type": "standard",
+      "title": "Prazo de Entrega com Cidade",
+      "output": {
+        "generic": []
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_2_1742828165291"
+      },
+      "conditions": "#Prazo_entrega && @Cidade",
+      "dialog_node": "node_3_1743429110015",
+      "previous_sibling": "node_1_1743430354785"
+    },
+    {
+      "type": "standard",
+      "title": "Se a resposta for Sim para o Cadastro",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Okk, correto!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1743432913220",
+      "conditions": "@sim_nao:Sim",
+      "dialog_node": "node_4_1744033374803",
+      "previous_sibling": "node_2_1744033264967"
+    },
+    {
+      "type": "standard",
+      "title": "Reserva de produto",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Não reservamos produtos. O produto só é reservado após a finalização da compra."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#reserva_produto",
+      "dialog_node": "node_5_1742826522463",
+      "previous_sibling": "node_1_1742826880646"
+    },
+    {
+      "type": "standard",
+      "title": "Captura Marca de celular",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "E você tem algum valor máximo para comprar este produto?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1743430421567",
+      "context": {
+        "marca_escolhida": "@marca_celular"
+      },
+      "conditions": "@marca_celular",
+      "dialog_node": "node_6_1743430540832"
+    },
+    {
+      "type": "standard",
+      "title": "Captura SIM para adicionar ao carrinho",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "O produto foi adicionado ao carrinho!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1743430654514",
+      "conditions": "@sim_nao:Sim",
+      "dialog_node": "node_8_1743430721225"
+    },
+    {
+      "type": "standard",
+      "title": "Captura o sim para as perguntas",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Você tem preferência por alguma marca de celular?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1743430354785",
+      "conditions": "@sim_nao:Sim",
+      "dialog_node": "node_9_1743430421567"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_1_1743432913220",
+      "variable": "$cep",
+      "dialog_node": "slot_8_1744031864220",
+      "previous_sibling": "node_4_1744033374803"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_1_1743432913220",
+      "variable": "$email",
+      "dialog_node": "slot_8_1744032617475",
+      "previous_sibling": "slot_9_1744032596122"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_1_1743432913220",
+      "variable": "$telefone",
+      "dialog_node": "slot_9_1744032596122",
+      "previous_sibling": "slot_8_1744031864220"
+    }
+  ],
+  "counterexamples": [
+    {
+      "text": "Bem-vindo"
+    }
+  ],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Você quis dizer:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "Nenhuma das anteriores",
+      "use_connect_to_support_prompt": "Connect to support",
+      "single_answer_clarification_prompt": "Something else"
+    },
+    "human_agent_assist": {
+      "prompt": "Você quis dizer:"
+    }
+  },
+  "learning_opt_out": false,
+  "language": "pt-br",
+  "description": "",
+  "name": "Assistente de Ecommerce 1TDSPG 2025-dialog"
+}
